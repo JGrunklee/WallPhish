@@ -1,0 +1,7 @@
+# .gitignore for WallPhish
+
+## Altium folders
+
+*/History/*
+*/Project\ Outputs*
+*/Project\ Logs*
