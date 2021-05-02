@@ -8,22 +8,23 @@ Mode). It also supports enabling/disabling custom animations.
 Here is a list of all the BLE characteristics included in the Pixel Strand
 service. 
 
-1. __Pixel Style__ (Read only)
-    * Possible values: `"RGB"`, `"GRB"`, `"RGBW"`, `"WGRB"`, etc.
-    * Number of characters gives number of individual LEDs per pixel.
-    * Gives ordering of individual pixels within each pixel.
-1. __Color Resolution__ (Read only)
-    * Gives the number of bytes per pixel needed to specify a color.
-    * Defines length of the Set Color field.
+1. __Color Format__ (Read only)
+    * ASCII-encoded value that gives the number of individual LEDs within each
+        pixel, their order, and the number of bits expected for each.
+    * Each LED is represented as a letter ('R', 'G', 'B', or 'W') followed by an integer 
+    * Letters may be either upper or lower case. Only alphanumeric characters are allowed.
+    * Typical example value: `'R8G8B8'`. This would mean each pixel requires 24 bits
+        to specify a color: 8 bits for red, 8 for green, and 8 for blue, in that order.
 1. __Number of Pixels__ (Read only)
     * Gives number of pixels in the strand.
 1. __Pixel Select__ (Read/Write)
-    * Index of the currently selected pixel.
+    * Index of the currently selected pixel. Indices start at 0.
     * Select a pixel by writing that pixel's index to this characteristic.
 1. __Pixel Select Mode__ (Read/Write)
-    * `0x01` = automatically increment Pixel Select after every write to the
+    * `0x01` = Automatically increment Pixel Select after every write to the
         Pixel Color characteristic, wrapping around at the end of the strip.
-    * `0x00` = do NOT automatically increment Pixel Select.
+    * `0x00` = Writing the Pixel Color characteristic has no effect on the Pixel Select
+        characteristic.
     * Other values are undefined.
 1. __Pixel Color__ (Read/Write)
     * Read this characteristic to get the color of the currently selected pixel.
