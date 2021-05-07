@@ -5,3 +5,6 @@
 */History/*
 */Project*Outputs*
 */Project*Logs*
+
+## Python
+*.pyc
