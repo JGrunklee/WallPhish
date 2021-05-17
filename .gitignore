@@ -2,9 +2,10 @@
 
 ## Altium folders
 
-*/History/*
-*/Project*Outputs*
-*/Project*Logs*
+History/
+Project*Outputs*/
+Project*Logs*/
+__Previews/
 
 ## Python
 *.pyc
